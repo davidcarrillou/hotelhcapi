@@ -32,7 +32,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://10.201.0.88:${process.env.PORT || 3001}/api`
+                url: `https://hotelhcapi.onrender.com/:${process.env.PORT || 3001}/api`
             }
         ]
     },
