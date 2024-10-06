@@ -25,12 +25,21 @@ const Cuartos = require('../controlador/cuartos.controler');
  *         disponible:
  *           type: boolean
  *           description: Si el cuarto está disponible o no
- *       example:
- *         id_cuarto: 1
- *         numero_cuarto: "101"
- *         tipo_cuarto: "Suite"
- *         precio: 150.00
- *         disponible: true
+ *         descripcion:
+ *           type: string
+ *           description: descripocion del cuarto
+ *         cantidad_disponibles:
+ *           type: number
+ *           description: cantidad de habitaciones
+ *         servicios_incluidos:
+ *           type: string
+ *           description: lista de servicios del cuarto
+ *         imagenes: 
+ *           type: string
+ *           description: ruta de las imagenes
+ *         fecha_registro:
+ *           type: date
+ *           description: fecha de registro
  */
 
 /**
@@ -50,6 +59,10 @@ const Cuartos = require('../controlador/cuartos.controler');
  *                 $ref: '#/components/schemas/Cuarto'
  */
 router.get('/cuartos', Cuartos.getCuartos);
+router.post('/cuartos', Cuartos.altaCuarto);
+router.get('/cuartos/:id', Cuartos.getCuartosById);
+router.put('/cuartos/:id', Cuartos.actualizarCuarto);
+router.delete('/cuartos/:id', Cuartos.eliminar);
 
 
 module.exports = router;

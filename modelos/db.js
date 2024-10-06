@@ -9,20 +9,8 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
-    pool: {
-      max: 10,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
-    },
+    port: process.env.DB_PORT,  // Añadir el puerto aquí
+    dialect: process.env.DB_DIALECT, // Dialecto (mysql)
     logging: false,
   }
 );
@@ -33,6 +21,15 @@ const sequelize = new Sequelize(
     console.log('Conexión a la base de datos exitosa.');
   } catch (error) {
     console.error('No se pudo conectar a la base de datos:', error);
+  }
+})();
+
+(async () => {
+  try {
+    await sequelize.sync({ force: false }); // Cambia a `true` solo si quieres reiniciar la base de datos
+    console.log('Las tablas han sido sincronizadas con éxito.');
+  } catch (error) {
+    console.error('Error al sincronizar las tablas:', error);
   }
 })();
 

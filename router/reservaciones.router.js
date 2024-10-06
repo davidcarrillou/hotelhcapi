@@ -173,7 +173,7 @@ router.put('/reservaciones/:id', ReservacionController.updateReservacion);
  *       500:
  *         description: Error al eliminar la reservación
  */
-router.delete('/reservaciones/:id_reservacion', ReservacionController.deleteReservacion);
+router.delete('/reservaciones/:id', ReservacionController.deleteReservacion);
 
 
 module.exports = router;
