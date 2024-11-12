@@ -17,30 +17,32 @@ const Cuartos = require('../controlador/cuartos.controler');
  *           description: Número del cuarto
  *         tipo_cuarto:
  *           type: string
- *           description: Tipo del cuarto (ej. individual, suite, etc.)
+ *           description: Tipo del cuarto (ej. simple, doble, suite)
  *         precio:
  *           type: number
  *           format: double
  *           description: Precio por noche
  *         disponible:
  *           type: boolean
- *           description: Si el cuarto está disponible o no
+ *           description: Indica si el cuarto está disponible
  *         descripcion:
  *           type: string
- *           description: descripocion del cuarto
+ *           description: Descripción del cuarto
  *         cantidad_disponibles:
- *           type: number
- *           description: cantidad de habitaciones
+ *           type: integer
+ *           description: Cantidad de habitaciones disponibles de este tipo
  *         servicios_incluidos:
  *           type: string
- *           description: lista de servicios del cuarto
- *         imagenes: 
+ *           description: Lista de servicios incluidos en el cuarto, separados por comas
+ *         imagenes:
  *           type: string
- *           description: ruta de las imagenes
+ *           description: Rutas de las imágenes del cuarto, separadas por comas
  *         fecha_registro:
- *           type: date
- *           description: fecha de registro
+ *           type: string
+ *           format: date-time
+ *           description: Fecha y hora de registro del cuarto
  */
+
 
 /**
  * @swagger
@@ -66,3 +68,5 @@ router.delete('/cuartos/:id', Cuartos.eliminar);
 
 
 module.exports = router;
+
+

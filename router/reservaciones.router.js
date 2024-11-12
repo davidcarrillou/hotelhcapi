@@ -18,22 +18,43 @@ const ReservacionController = require('../controlador/reservacion.controler');
  *           description: ID del cuarto reservado
  *         nombre_cliente:
  *           type: string
- *           description: Nombre del cliente
+ *           description: Nombre completo del cliente
+ *         email_cliente:
+ *           type: string
+ *           format: email
+ *           description: Correo electrónico del cliente
+ *         telefono_cliente:
+ *           type: string
+ *           description: Número de teléfono del cliente
  *         ingreso:
  *           type: string
- *           format: date
- *           description: Fecha de ingreso
+ *           format: date-time
+ *           description: Fecha y hora de ingreso del cliente
  *         salida:
  *           type: string
- *           format: date
- *           description: Fecha de salida
- *       example:  # Ejemplo general
- *         id_reservacion: 1
- *         id_cuarto: 101
- *         nombre_cliente: "Juan Pérez"
- *         ingreso: "2024-09-25"
- *         salida: "2024-09-28"
+ *           format: date-time
+ *           description: Fecha y hora de salida del cliente
+ *         notas:
+ *           type: string
+ *           description: Notas adicionales sobre la reservación
+ *         cantidad_huespedes:
+ *           type: integer
+ *           description: Número de huéspedes incluidos en la reservación
+ *         comentarios_especiales:
+ *           type: string
+ *           description: Comentarios especiales del cliente
+ *         codigo_promocional:
+ *           type: string
+ *           description: Código promocional aplicado a la reservación, si existe
+ *         activo:
+ *           type: boolean
+ *           description: Indica si la reservación está activa
+ *         fecha_registro:
+ *           type: string
+ *           format: date-time
+ *           description: Fecha y hora en que se registró la reservación
  */
+
 
 /**
  * @swagger
@@ -47,24 +68,13 @@ const ReservacionController = require('../controlador/reservacion.controler');
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Reservacion'
- *           example:  # Ejemplo de creación
- *             id_cuarto: 1
- *             nombre_cliente: "Juan Perez"
- *             ingreso: "2024-10-01"
- *             salida: "2024-10-05"
- *             email_cliente: "juan.perez@example.com"
- *             telefono_cliente: "555-1234"
- *             cantidad_huespedes: 2
- *             comentarios_especiales: "Cama extra"
- *             codigo_promocional: "DESCUENTO2024"
- *             notas: "Prefiere vista al mar"
  *     responses:
  *       201:
  *         description: Reservación creada con éxito
  *       500:
  *         description: Error al crear la reservación
  */
-router.post('/reservaciones', ReservacionController.createReservacion);
+router.post('/reservaciones', ReservacionController.crearReservacion);
 
 /**
  * @swagger
@@ -132,16 +142,6 @@ router.get('/reservaciones/:id', ReservacionController.getReservacionById);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Reservacion'
- *           example:
- *             nombre_cliente: "Juan Perez"
- *             ingreso: "2024-10-01"
- *             salida: "2024-10-05"
- *             email_cliente: "juan.perez@example.com"
- *             telefono_cliente: "555-1234"
- *             cantidad_huespedes: 2
- *             comentarios_especiales: "Cama extra"
- *             codigo_promocional: "DESCUENTO2024"
- *             activo: true
  *     responses:
  *       200:
  *         description: Reservación actualizada con éxito
@@ -150,7 +150,7 @@ router.get('/reservaciones/:id', ReservacionController.getReservacionById);
  *       500:
  *         description: Error al actualizar la reservación
  */
-router.put('/reservaciones/:id', ReservacionController.updateReservacion);
+router.put('/reservaciones/:id', ReservacionController.actualizarReservacion);
 
 /**
  * @swagger

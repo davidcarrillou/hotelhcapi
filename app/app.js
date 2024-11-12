@@ -32,7 +32,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `https://hotelhcapi.onrender.com/api`
+                url: `http://localhost:3001/api`
             }
         ]
     },
@@ -46,3 +46,5 @@ app.use('/api', reservacionRoutes);
 
 
 module.exports = app;
+
+

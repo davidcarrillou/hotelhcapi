@@ -26,7 +26,7 @@ const sequelize = new Sequelize(
 
 (async () => {
   try {
-    await sequelize.sync({ force: false }); // Cambia a `true` solo si quieres reiniciar la base de datos
+    await sequelize.sync({ force: false }); 
     console.log('Las tablas han sido sincronizadas con éxito.');
   } catch (error) {
     console.error('Error al sincronizar las tablas:', error);
@@ -34,3 +34,4 @@ const sequelize = new Sequelize(
 })();
 
 module.exports = sequelize;
+
